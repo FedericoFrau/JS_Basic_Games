@@ -32,11 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
             name: "foto8",
             img: "images/003.webp"
         }
-        // ,
-        // {
-        //     name: "foto9",
-        //     img: "images/005.webp"
-        // }
     ];
 
     
@@ -64,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
             card.setAttribute("src", "images/bg.jpg");
             card.setAttribute("data-id", i);
             card.classList.add("backImg");
-            card.addEventListener("click",  flipCard);
+            card.addEventListener("click", flipCard);
             grid.appendChild(card);
         }
     };
@@ -73,19 +68,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const cards = document.querySelectorAll("img")
         const optionOneId = cardsChosenId[0]
         const optionTwoId = cardsChosenId[1]
-        console.log(cardsChosen, "cardsChosen")
         if (cardsChosen[0] === cardsChosen[1]) {
             message.textContent = "You found a match!"
             setTimeout(() => {
                 message.textContent = ""
             }, 2000);
             cards[optionOneId].setAttribute("src", "images/white.jpg")
-            // cards[optionOneId].setAttribute("disabled", "")
             cards[optionTwoId].setAttribute("src", "images/white.jpg")
-            // cards[optionTwoId].setAttribute("disabled", "")
             cardsWon.push(cardsChosen[0])
             console.log(cardsWon, "cardsWon")
-            
         } else {
             setTimeout(() => {
                 cards[optionOneId].setAttribute("src", "images/bg.jpg")
@@ -107,12 +98,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function flipCard() {
         console.log(this)
         let cardId = this.getAttribute("data-id");
-        if (cardId != cardsChosenId[0]) {
+        if (cardId != cardsChosenId[0] & !cardsWon.includes(arrayDuplicated[cardId].name)) {
             cardsChosen.push(arrayDuplicated[cardId].name);
             cardsChosenId.push(cardId);
             this.setAttribute("src", arrayDuplicated[cardId].img);
         }
-        console.log(cardsChosen)
+        console.log(cardsChosen, "cardsChosen")
         if (cardsChosen.length === 2) {
             setTimeout(checkForMatch, 100)
         };
