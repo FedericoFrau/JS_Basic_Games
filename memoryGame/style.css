@@ -1,0 +1,29 @@
+body {
+    /* height: fit-content; */
+    max-height: 100vh!important;
+}
+
+.grid {
+    display:flex;
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: wrap;
+    height: 80vw;
+    width: 80vw;
+    max-height: 90vh;
+}
+.backImg {
+    max-width: 20vw;
+    max-height: 20vw;
+}
+.infoText {
+    display:flex;
+    justify-content: space-between;
+    margin: 0 4%;
+}
+.infoTextLeft {
+    color: rgb(0, 68, 194);
+}
+.infoTextRight {
+    color: rgb(231, 0, 69);    
+}
