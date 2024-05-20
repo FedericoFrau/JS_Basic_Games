@@ -65,29 +65,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     
     function messageUpdate (text, time) {
-        const clearMsg = () => {
-            console.log("borrando")
-            message.textContent = ""
-        }
+        const clearMsg = () => message.textContent = ""
         const delayedClear = () => setTimeout(clearMsg, time)
-        // function clearTimer () {
-        //     console.log("evitando")
-        //     clearTimeout(delayedClear)
-        // }
-        // clearTimer()
-        // const cancelTimeout = () => clearTimeout(delayedClear)
-        // cancelTimeout()
-        // const delayedClear = setTimeout(clearMsg, time)
-        console.log(text, time)
         if (time) {
-            console.log("temporal")
             message.textContent = text
-            // setTimeout(clearMsg, time)
             delayedClear()
         } else {
-            console.log("fijo")
-            // clearTimeout(delayedClear)
-            // cancelTimeout()
             message.textContent = text
         }
     }
@@ -97,20 +80,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const optionOneId = cardsChosenId[0]
         const optionTwoId = cardsChosenId[1]
         if (cardsChosen[0] === cardsChosen[1]) {
-            console.log("1")
             cardsWon.push(cardsChosen[0])
             resultDisplay.textContent = cardsWon.length
-            console.log(cardsWon, "cardsWon")
             cards[optionOneId].setAttribute("src", "images/white.jpg")
             cards[optionTwoId].setAttribute("src", "images/white.jpg")
             if (cardsWon.length === arrayDuplicated.length/2) {
-                console.log("3")
                 messageUpdate("Congratulations! You found them all!")
                 return
             }
             messageUpdate("You found a match!",2000)
         } else {
-            console.log("2")
             setTimeout(() => {
                 cards[optionOneId].setAttribute("src", "images/bg.jpg")
                 cards[optionTwoId].setAttribute("src", "images/bg.jpg")
@@ -119,18 +98,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         cardsChosen = []
         cardsChosenId = []
-        
     }
     
     function flipCard() {
-        console.log(this)
         let cardId = this.getAttribute("data-id");
         if (cardId != cardsChosenId[0] & !cardsWon.includes(arrayDuplicated[cardId].name)) {
             cardsChosen.push(arrayDuplicated[cardId].name);
             cardsChosenId.push(cardId);
             this.setAttribute("src", arrayDuplicated[cardId].img);
         }
-        console.log(cardsChosen, "cardsChosen")
         if (cardsChosen.length === 2) {
             setTimeout(checkForMatch, 100)
         };
