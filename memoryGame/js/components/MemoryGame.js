@@ -1,39 +1,49 @@
-document.addEventListener('DOMContentLoaded', () => {
+
+const MemoryGame = () => {
+    const main = document.querySelector("main");
+    const HTMLContent = `
+        <div class="infoText">
+            <h3 class="infoTextLeft">Score: <span id="result">0</span></h3>
+            <h3 class="infoTextRight"><span id="message"></span></h3>
+        </div>
+        <div class="grid"></div>`;
+    main.innerHTML = HTMLContent;
+    
     const cardArray = [
         {
             name: "foto1",
-            img: "images/006.webp"
+            img: "assets/img/006.webp"
         },
         {
             name: "foto2",
-            img: "images/008.webp"
+            img: "assets/img/008.webp"
         },
         {
             name: "foto3",
-            img: "images/009.webp"
+            img: "assets/img/009.webp"
         },
         {
             name: "foto4",
-            img: "images/010.webp"
+            img: "assets/img/010.webp"
         },
         {
             name: "foto5",
-            img: "images/041.webp"
+            img: "assets/img/041.webp"
         },
         {
             name: "foto6",
-            img: "images/222.webp"
+            img: "assets/img/222.webp"
         },
         {
             name: "foto7",
-            img: "images/002.webp"
+            img: "assets/img/002.webp"
         },
         {
             name: "foto8",
-            img: "images/003.webp"
+            img: "assets/img/003.webp"
         }
     ];
-
+    
     
     const arrayDuplicated = []
     const cardArrayDuplicated = () => {
@@ -45,18 +55,18 @@ document.addEventListener('DOMContentLoaded', () => {
     cardArrayDuplicated()
     
     arrayDuplicated.sort(() => 0.5 - Math.random())
-
+    
     const grid = document.querySelector(".grid");
     const resultDisplay = document.querySelector("#result")
     const message = document.querySelector("#message")
     let cardsChosen = [];
     let cardsChosenId = [];
     let cardsWon = [];
-
+    
     const createBoard = () => {
         for (let i=0; i < arrayDuplicated.length; i++) {
             const card = document.createElement("img");
-            card.setAttribute("src", "images/bg.jpg");
+            card.setAttribute("src", "assets/img/bg.jpg");
             card.setAttribute("data-id", i);
             card.classList.add("backImg");
             card.addEventListener("click", flipCard);
@@ -74,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
             message.textContent = text
         }
     }
-
+    
     const checkForMatch = () => {
         const cards = document.querySelectorAll("img")
         const optionOneId = cardsChosenId[0]
@@ -82,8 +92,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cardsChosen[0] === cardsChosen[1]) {
             cardsWon.push(cardsChosen[0])
             resultDisplay.textContent = cardsWon.length
-            cards[optionOneId].setAttribute("src", "images/white.jpg")
-            cards[optionTwoId].setAttribute("src", "images/white.jpg")
+            cards[optionOneId].setAttribute("src", "assets/img/white.jpg")
+            cards[optionTwoId].setAttribute("src", "assets/img/white.jpg")
             if (cardsWon.length === arrayDuplicated.length/2) {
                 messageUpdate("Congratulations! You found them all!")
                 return
@@ -91,8 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
             messageUpdate("You found a match!",2000)
         } else {
             setTimeout(() => {
-                cards[optionOneId].setAttribute("src", "images/bg.jpg")
-                cards[optionTwoId].setAttribute("src", "images/bg.jpg")
+                cards[optionOneId].setAttribute("src", "assets/img/bg.jpg")
+                cards[optionTwoId].setAttribute("src", "assets/img/bg.jpg")
             }, 800);
             messageUpdate("Sorry, try again",2000)
         }
@@ -113,4 +123,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     createBoard();
-})
+}
+
+window.memoryGame = MemoryGame;
+
+export default MemoryGame
+
+
+
