@@ -1,8 +1,7 @@
 body {
     /* height: fit-content; */
-    max-height: 100vh!important;
+    max-height: 100vh;
 }
-
 .grid {
     display:flex;
     margin-left: auto;
@@ -10,7 +9,7 @@ body {
     flex-wrap: wrap;
     height: 80vw;
     width: 80vw;
-    max-height: 90vh;
+    max-height: 80vh;
 }
 .backImg {
     max-width: 20vw;
