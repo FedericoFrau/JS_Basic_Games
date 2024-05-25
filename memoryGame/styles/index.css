@@ -1,7 +1,11 @@
 body {
     /* height: fit-content; */
-    max-height: 100vh;
+    height: 100vh;
+    width: 100vw;
+    margin: 0 0 0 0;
+    padding: 0;
 }
+/* from here MemoryGame */
 .grid {
     display:flex;
     margin-left: auto;
@@ -26,3 +30,29 @@ body {
 .infoTextRight {
     color: rgb(231, 0, 69);    
 }
+/* until here MemoryGame */
+/* from here WelcomeFrame */
+.welcomeContainer {
+    margin-top: 4vh;    
+}
+.welcomeText {
+    text-align: center;
+    margin: 1vh 0vw;
+    font-size: 4vh;
+    font-family:cursive;
+    color: rgb(0, 43, 100);
+}
+/* until here WelcomeFrame */
+/* from here NavbarComp */
+.navbarContainer {
+    display: flex;
+    justify-content:space-evenly;
+    flex-wrap: wrap;
+    gap: 2vw;
+    row-gap: 1vh;
+    /* margin-top: 3vh;
+    margin-left: 5vw;
+    margin-right: 5vw; */
+    margin: 3vh 4vw;
+}
+/* until here NavbarComp */
