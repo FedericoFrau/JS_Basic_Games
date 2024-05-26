@@ -1,38 +1,36 @@
-// import '../../styles/navbarComp.css';
 import '../components/MemoryGame.js'
 
-const header = document.querySelector("header")
+const gamesList = [
+    {
+        name: "Memory Game",
+        functionName: "memoryGame()"
+    },
+    {
+        name: "Whack A Mole",
+        functionName: "whackAMole()"
+    }
+]
 
 const NavbarComp = () => {
-  return (header.innerHTML = `
+    const header = document.querySelector("header")
+    
+    let gamesButtons = ""
+    const adition = gamesList.forEach(game => { 
+        gamesButtons +=`
+        <button 
+        class="gameBtn" 
+        type="button"
+        onclick="${game.functionName}"
+        >${game.name}</button>
+        `
+    })
+
+    const HTMLContent = `
     <div class="navbarContainer">
-
-        <button 
-        class="gameBtn" 
-        type="button"
-        onclick="memoryGame()"
-        >Memory Game</button>
-
-        <button 
-        class="gameBtn" 
-        type="button"
-        onclick=""
-        >Juego 2</button>
-
-        <button 
-        class="gameBtn" 
-        type="button"
-        onclick=""
-        >Juego 3</button>
-
-        <button 
-        class="gameBtn" 
-        type="button"
-        onclick=""
-        >Juego 4</button>
-        
+    ${gamesButtons}
     </div>
-  `)
+    `
+    header.innerHTML = HTMLContent
 }
-
+    
 export default NavbarComp
