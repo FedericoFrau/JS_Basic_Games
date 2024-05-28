@@ -1,4 +1,5 @@
 import '../components/MemoryGame.js'
+import '../components/WhackAMoleGame.js'
 
 const gamesList = [
     {
@@ -7,7 +8,7 @@ const gamesList = [
     },
     {
         name: "Whack A Mole",
-        functionName: "whackAMole()"
+        functionName: "whackAMoleGame()"
     }
 ]
 
