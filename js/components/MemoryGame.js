@@ -2,11 +2,13 @@
 const MemoryGame = () => {
     const main = document.querySelector("main");
     const HTMLContent = `
-        <div class="infoText">
-            <h3 class="infoTextLeft">Score: <span id="result">0</span></h3>
-            <h3 class="infoTextRight"><span id="message"></span></h3>
-        </div>
-        <div class="grid"></div>`;
+        <div class="memoryGameContainer">
+            <div class="infoText">
+                <h3 class="infoTextLeft">Score: <span id="result">0</span></h3>
+                <h3 class="infoTextRight"><span id="message"></span></h3>
+            </div>
+            <div class="grid"></div>
+        </div>`;
     main.innerHTML = HTMLContent;
     
     const cardArray = [
