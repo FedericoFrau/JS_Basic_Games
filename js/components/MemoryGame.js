@@ -1,8 +1,9 @@
 
 const MemoryGame = () => {
+    const title = document.querySelector("title");
     const main = document.querySelector("main");
     const HTMLContent = `
-        <div class="memoryGameContainer">
+        <div class="memoryContainer">
             <div class="infoText">
                 <h3 class="infoTextLeft">Score: <span id="result">0</span></h3>
                 <h3 class="infoTextRight"><span id="message"></span></h3>
@@ -46,6 +47,7 @@ const MemoryGame = () => {
         }
     ];
     
+    title.innerHTML = "Memory Game"
     
     const arrayDuplicated = []
     const cardArrayDuplicated = () => {
