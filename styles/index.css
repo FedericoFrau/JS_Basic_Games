@@ -59,6 +59,9 @@ body {
     height: 200px;
     border-style: solid;
     border-color: black;
+    
+    /* background-position-y: 20px; */
+    background-position-x: -20px;
 }
 .whackAMoleContainer .grid {
     display: flex;
@@ -69,10 +72,33 @@ body {
     margin-right: auto;
     width: 618px;
     height: 618px;
+    cursor: url(/assets/img/cursor_hammer-Photoroom.png) 0 30, grab;
 }
 .whackAMoleContainer .infoText {
     display: flex;
     justify-content: space-between;
     margin: 0 4%;
 }
+.mole {
+    background-image: url(/assets/img/whackamole.jpeg);
+    background-size: cover;
+    /* transition: transform 0.5s;
+    transform:translateY(50%); */
+    animation: slide-in-top 0.3s both;
+}
+@keyframes slide-in-top {
+    0% {
+      transform: translateY(50%);
+      opacity: 0;
+    }
+  
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+/* .mole > img {
+    transform: translateY(-50%);
+    object-position: 80% 80%;
+} */
 /* until here WhackAMoleGame */
