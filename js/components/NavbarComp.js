@@ -1,5 +1,6 @@
 import '../components/MemoryGame.js'
 import '../components/WhackAMoleGame.js'
+import '../components/ConnectFourGame.js'
 
 const gamesList = [
     {
@@ -9,6 +10,10 @@ const gamesList = [
     {
         name: "Whack A Mole",
         functionName: "whackAMoleGame()"
+    },
+    {
+        name: "Connect Four",
+        functionName: "connectFourGame()"
     }
 ]
 
@@ -33,5 +38,6 @@ const NavbarComp = () => {
     `
     header.innerHTML = HTMLContent
 }
+
     
 export default NavbarComp
