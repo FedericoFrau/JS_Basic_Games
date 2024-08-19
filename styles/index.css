@@ -156,4 +156,7 @@ body {
     width: auto!important;
     /* display: inline-block; */
 }
+.freezed {
+    pointer-events: none;
+}
 /* until here ConnectFourGame */

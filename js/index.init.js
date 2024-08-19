@@ -5,3 +5,4 @@ document.addEventListener("DOMContentLoaded", () => {
     NavbarComp()
     WelcomeFrame()
 })
+//TODO Add favicon 
