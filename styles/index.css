@@ -1,3 +1,8 @@
+:root {
+    --color-red: rgb(255,0,0);
+    --color-yellow: rgb(255, 251, 0);
+}
+
 body {
     /* height: fit-content; */
     /* height: 100vh; */
@@ -7,7 +12,7 @@ body {
 }
 /* from here WelcomeFrame */
 .welcomeContainer {
-    margin-top: 4vh;    
+    margin-top: 4vh;
 }
 .welcomeText {
     text-align: center;
@@ -45,12 +50,11 @@ body {
     display:flex;
     justify-content: space-between;
     margin: 0 4%;
-}
-.infoTextLeft {
+    font-family:cursive;
     color: rgb(0, 68, 194);
 }
 .infoTextRight {
-    color: rgb(231, 0, 69);    
+    color: rgb(231, 0, 69);
 }
 /* until here MemoryGame */
 /* from here WhackAMoleGame */
@@ -59,7 +63,6 @@ body {
     height: 200px;
     border-style: solid;
     border-color: black;
-    
     /* background-position-y: 20px; */
     background-position-x: -20px;
 }
@@ -78,6 +81,7 @@ body {
     display: flex;
     justify-content: space-between;
     margin: 0 4%;
+    font-family:cursive;
 }
 .mole {
     background-image: url(/assets/img/whackamole.jpeg);
@@ -91,7 +95,7 @@ body {
       transform: translateY(50%);
       opacity: 0;
     }
-  
+
     100% {
       transform: translateY(0);
       opacity: 1;
@@ -102,3 +106,57 @@ body {
     object-position: 80% 80%;
 } */
 /* until here WhackAMoleGame */
+/* from here ConnectFourGame */
+.red {
+    color: var(--color-red);
+    text-shadow: 2px 2px 5px rgb(163, 163, 163);
+}
+.yellow {
+    color: var(--color-yellow);
+    text-shadow: 2px 2px 5px rgb(0, 0, 0);
+}
+.connectContainer .grid {
+    border: 1px solid;
+    border-radius: 5px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: wrap;
+    height: 420px;
+    width: 490px;
+}
+.connectContainer .grid .cell {
+    height: 60px;
+    width: 60px;
+    padding: 5px;
+    background-color: rgb(3, 59, 214);
+}
+.connectContainer .grid .cell .circle {
+    height: 60px;
+    width: 60px;
+    background-color: white;
+    border-radius: 30px;
+}
+.connectContainer .grid .cell.playerOne .circle {
+    background-color: var(--color-red);
+}
+.connectContainer .grid .cell.playerTwo .circle {
+    background-color: var(--color-yellow);
+}
+.connectContainer .infoText {
+    display:flex;
+    justify-content: space-between;
+    margin: 0 4%;
+    font-family:cursive;
+    color: rgb(0, 68, 194);
+}
+.swal2-popup {
+    font-size: 1.8rem;
+    white-space: nowrap;
+    width: auto!important;
+    /* display: inline-block; */
+}
+.freezed {
+    pointer-events: none;
+}
+/* until here ConnectFourGame */
