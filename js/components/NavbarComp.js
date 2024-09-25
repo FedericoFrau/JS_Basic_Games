@@ -4,7 +4,7 @@ import '../components/ConnectFourGame.js'
 
 const gamesList = [
     {
-        name: "Memory Game",
+        name: "Memory",
         functionName: "memoryGame()"
     },
     {
@@ -14,6 +14,10 @@ const gamesList = [
     {
         name: "Connect Four",
         functionName: "connectFourGame()"
+    },
+    {
+        name: "Snake",
+        functionName: "snakeGame()"
     }
 ]
 
