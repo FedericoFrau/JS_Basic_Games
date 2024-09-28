@@ -1,6 +1,7 @@
-import '../components/MemoryGame.js'
-import '../components/WhackAMoleGame.js'
-import '../components/ConnectFourGame.js'
+import '../components/MemoryGame.js';
+import '../components/WhackAMoleGame.js';
+import '../components/ConnectFourGame.js';
+import '../components/MoonLanderGame.js';
 
 const gamesList = [
     {
@@ -14,6 +15,14 @@ const gamesList = [
     {
         name: "Connect Four",
         functionName: "connectFourGame()"
+    },
+
+
+
+
+    {
+        name: "Moon Lander",
+        functionName: "moonLanderGame()"
     }
 ]
 

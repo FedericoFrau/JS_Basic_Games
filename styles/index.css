@@ -160,3 +160,11 @@ body {
     pointer-events: none;
 }
 /* until here ConnectFourGame */
+/* from here MoonLanderGame */
+.spaceShip {
+    width: 20px;
+    height: 30px;
+    background-color: red;
+    position: absolute;
+}
+/* until here MoonLanderGame */
