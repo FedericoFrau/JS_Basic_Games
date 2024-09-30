@@ -9,7 +9,6 @@ const MoonLanderGame = () => {
     main.innerHTML = "";
     moonLand.appendChild(spaceShip)
     main.appendChild(moonLand);
-    let movementAble = true;
     let spaceShipLaunched = false;
     let horizontalSpeed = 250;
     let horizontalDirection;
@@ -104,26 +103,6 @@ const MoonLanderGame = () => {
         setTimeout(verticalMovement, verticalSpeed)
     };
 
-    // function horizontalMovement() {
-    //         movementAble=true;
-    //         const movement = setInterval(()=>{
-    //             const spaceShipLeftPosition = spaceShip.offsetLeft;
-    //             const spaceShipWidth = spaceShip.offsetWidth ;
-    //             const screenRightMargin = window.innerWidth;
-    //             if(spaceShipLeftPosition+spaceShipWidth < screenRightMargin && movementAble) {
-    //                 spaceShip.style.left = `${spaceShip.offsetLeft+1}px`
-    //                 console.log("avance")
-    //             } else {
-    //                 clearInterval(movement)
-    //                 console.log("parado")
-    //             };
-                
-    //         }, horizontalSpeed)
-    //     // clearInterval(movement);
-        
-    //     console.log("funciona")
-    // }
-
     function adjustHorizontalSpeed(directionKey) {
         console.log('adjHspeed')
         switch(horizontalDirection) {
@@ -147,7 +126,6 @@ const MoonLanderGame = () => {
     function horizontalMovement(directionKey) {
         console.log('hMov run')
         console.log(horizontalDirection)
-        // movementAble=true;
         horizontalRuning = true;
         let movement;
         const spaceShipLeftPosition = spaceShip.offsetLeft;
@@ -191,15 +169,6 @@ const MoonLanderGame = () => {
                 // console.log(spaceShip.offsetLeft);
                 break;
         }
-
-        // if(spaceShipLeftPosition+spaceShipWidth < screenRightMargin && movementAble) {
-        //     spaceShip.style.left = `${spaceShip.offsetLeft+1}px`;
-        //     console.log("avance");
-        // } else {
-        //     // clearTimeout(movement);
-        //     console.log("parado");
-        //     return;
-        // };
         
         if(horizontalSpeed>=250) {
             console.log("detenido");
@@ -209,10 +178,6 @@ const MoonLanderGame = () => {
         }
         movement = setTimeout(horizontalMovement, horizontalSpeed)
     }
-    
-    // console.log(spaceShipLeftPosition)
-    // console.log(spaceShipWidth)
-    // console.log(screenRightMargin)
 
     document.activeElement.blur();
     document.addEventListener('keydown', e => {
@@ -242,18 +207,6 @@ const MoonLanderGame = () => {
                 break;
             case 'ArrowUp':
                 break;
-
-            // case 'Space':
-            //     if(movementAble){
-            //         movementAble=false;
-            //         console.log("false");
-            //         break;
-            //     } else if(!movementAble) {
-            //         movementAble=true;
-            //         console.log("true");
-            //         break;
-            //     }
-            //     break;
         }
         
     });
