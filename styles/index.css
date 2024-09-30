@@ -161,10 +161,26 @@ body {
 }
 /* until here ConnectFourGame */
 /* from here MoonLanderGame */
+.moonLand {
+    position: absolute;
+    width: 95vw;
+    height: 90vh;
+    border: 2px solid rgb(82, 82, 82);
+    border-radius: 10px;
+    top: auto;
+    bottom: auto;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
 .spaceShip {
-    width: 20px;
-    height: 30px;
-    background-color: red;
+    background-image: url(/assets/img/space_ship_vector.png);
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-color: rgba(255, 0, 0, 0.486);
+    top: 5%;
+    width: 2.8em;
+    height: 3em;
     position: absolute;
 }
 /* until here MoonLanderGame */
