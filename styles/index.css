@@ -175,7 +175,7 @@ body {
 }
 .spaceShip {
     background-image: url(/assets/img/space_ship_vector.png);
-    background-size:contain;
+    background-size: 2.8em 3em;
     background-repeat: no-repeat;
     background-color: rgba(255, 0, 0, 0.486);
     top: 5%;
