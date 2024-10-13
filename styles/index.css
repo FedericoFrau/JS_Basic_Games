@@ -183,4 +183,35 @@ body {
     height: 3em;
     position: absolute;
 }
+.infoMonitors {
+    position: relative;
+    width: fit-content;
+    left: auto;
+    right: 10px;
+    margin-left: auto;
+}
+.horizontalSpeedMonitor, .verticalSpeedMonitor, .altitudeMonitor {
+    /* position: relative; */
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: black;
+    background-color: rgba(0, 225, 255, 0.425);
+    /* width: fit-content;
+    height: fit-content; */
+    display: flex;
+    justify-content:space-between;
+    /* text-align:center; */
+    /* text-align: end; */
+    /* text-align-last:justify; */
+    text-transform:uppercase;
+    text-shadow: 1px 1px 1px aqua;
+    /* left: 10;
+    right: 10px;
+    margin-left: auto; */
+    
+}
+.telemetryValue {
+    /* color: red; */
+    min-width:4em;
+    text-align-last: right;
+}
 /* until here MoonLanderGame */

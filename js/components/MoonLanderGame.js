@@ -1,40 +1,60 @@
 const MoonLanderGame = () => {
     const main = document.querySelector("main");
-    const tittle = document.querySelector("tittle");
+    const title = document.querySelector("title");
     
     const moonLand = document.createElement('div');
     const spaceShip = document.createElement('div');
-    moonLand.classList.add('moonLand')
+    const altitudeMonitor = document.createElement('div');
+    const horizontalSpeedMonitor = document.createElement('div');
+    const verticalSpeedMonitor = document.createElement('div');
+    const infoMonitors = document.createElement('div');
+    infoMonitors.classList.add('infoMonitors');
+    altitudeMonitor.classList.add('altitudeMonitor');
+    horizontalSpeedMonitor.classList.add('horizontalSpeedMonitor');
+    verticalSpeedMonitor.classList.add('verticalSpeedMonitor');
+    moonLand.classList.add('moonLand');
     spaceShip.classList.add('spaceShip');
-    main.innerHTML = "";
-    moonLand.appendChild(spaceShip)
+    main.innerHTML = '';
+    infoMonitors.appendChild(altitudeMonitor);
+    infoMonitors.appendChild(horizontalSpeedMonitor);
+    infoMonitors.appendChild(verticalSpeedMonitor);
+    moonLand.appendChild(infoMonitors);
+    moonLand.appendChild(spaceShip);
     main.appendChild(moonLand);
+    title.innerHTML = 'Moon Lander Game';
     let gravity;
     let spaceShipLaunched = false;
     let horizontalSpeed = 250;
     let horizontalDirection;
     let horizontalRuning = false;
-
     let verticalSpeed = 250;
     let verticalDirection;
     let verticalRuning = false;
+
+    const horizontalSpeedMonitorUpdate = ()=> horizontalSpeedMonitor.innerHTML = `Horizontal Speed: <span class='telemetryValue'>${horizontalSpeed}</span>`;
+    const verticalSpeedMonitorUpdate = ()=> verticalSpeedMonitor.innerHTML = `Vertical Speed: <span class='telemetryValue'>${verticalSpeed}</span>`;
+    const altitudeMonitorUpdate = ()=> altitudeMonitor.innerHTML = `Altitude: <span class='telemetryValue'>${moonLand.clientHeight - spaceShip.offsetTop - spaceShip.offsetHeight}</span>`;
 
     const stopHorizontalMove = ()=> {
         horizontalDirection = undefined;
         horizontalSpeed = 250;
         horizontalRuning = false;
+        horizontalSpeedMonitorUpdate();
+        altitudeMonitorUpdate();
         console.log("horizontal move stopped")
-    }
+    };
 
     const stopVerticalMove = ()=> {
         verticalDirection = undefined;
         verticalSpeed = 250;
         verticalRuning = false;
+        verticalSpeedMonitorUpdate();
+        altitudeMonitorUpdate();
         console.log("vertical move stopped")
-    }
+    };
 
     function adjustVerticalSpeed(directionKey) {
-        console.log('adjVspeed->', directionKey)
+        // console.log('adjVspeed->', directionKey)
         switch(verticalDirection) {
             case 'Up':
                 if(directionKey==='ArrowUp' && verticalSpeed>1) {
@@ -55,12 +75,14 @@ const MoonLanderGame = () => {
 
     function gravityAdjust() {
         !verticalRuning&&spaceShipLaunched ?verticalMovement('ArrowDown') :adjustVerticalSpeed('ArrowDown');
-        console.log(verticalSpeed);
+        // console.log(verticalSpeed);
         // console.log('gravity adjusted')
-        gravity = setTimeout(gravityAdjust,500)
+        gravity = setTimeout(gravityAdjust,200)
     };
-
+    //TODO implement 'requestAnimationFrame()'
     function verticalMovement(directionKey) {
+        altitudeMonitorUpdate();
+        verticalSpeedMonitorUpdate();
         verticalRuning = true;
         const spaceShipTopPosition = spaceShip.offsetTop;
         const spaceShipHeight = spaceShip.offsetHeight;
@@ -78,44 +100,34 @@ const MoonLanderGame = () => {
             case 'Up':
                 if(spaceShipTopPosition > 0) {
                     spaceShip.style.top = `${spaceShip.offsetTop-1}px`;
-                    console.log("subida");
                 } else {
                     stopVerticalMove();
-                    console.log("fin carrera superior");
+                    console.log("upper end reached");
                     return;
                 }
-                // console.log(spaceShip.offsetTop);
                 break;
             case 'Down':
                 if(spaceShipTopPosition+spaceShipHeight < containerBottomMargin) {
                     spaceShip.style.top = `${spaceShip.offsetTop+1}px`;
-                    console.log("bajada");
                 } else if (verticalSpeed>245 && (spaceShipTopPosition+spaceShipHeight === containerBottomMargin)) {
                     stopVerticalMove();
                     stopHorizontalMove();
                     clearTimeout(gravity);
+                    document.removeEventListener('keydown', keysListener);
                     console.log("successfully landing");
                     return;
                 } else if (verticalSpeed<245 && (spaceShipTopPosition+spaceShipHeight === containerBottomMargin)) {
                     stopVerticalMove();
                     stopHorizontalMove();
                     clearTimeout(gravity);
+                    document.removeEventListener('keydown', keysListener);
                     console.log("crashed!");
                     return;
                 }
-                // else {
-                //     console.log("fin carrera inferior");
-                //     verticalDirection = undefined;
-                //     verticalSpeed = 250;
-                //     verticalRuning = false;
-                //     return;
-                // }
-                // console.log(spaceShip.offsetTop);
                 break;
         }
         if(verticalSpeed>=250) {
             stopVerticalMove();
-            // console.log("detenido");
             return;
         }
         setTimeout(verticalMovement, verticalSpeed)
@@ -140,12 +152,12 @@ const MoonLanderGame = () => {
                 break;
         }
     }
-
+    //TODO implement 'requestAnimationFrame()'
     function horizontalMovement(directionKey) {
         console.log('hMov run')
-        console.log(horizontalDirection)
+        // console.log(horizontalDirection)
+        horizontalSpeedMonitorUpdate();
         horizontalRuning = true;
-        let movement;
         const spaceShipLeftPosition = spaceShip.offsetLeft;
         const spaceShipWidth = spaceShip.offsetWidth ;
         const containerRightMargin = moonLand.clientWidth;
@@ -163,53 +175,46 @@ const MoonLanderGame = () => {
             case 'Left':
                 if(spaceShipLeftPosition > 0) {
                     spaceShip.style.left = `${spaceShip.offsetLeft-1}px`;
-                    console.log("avance izquierda");
                 } else {
                     stopHorizontalMove();
-                    console.log("fin carrera");
+                    console.log("left end reached");
                     return;
                 }
-                // console.log(spaceShip.offsetLeft);
                 break;
             case 'Right':
                 if(spaceShipLeftPosition+spaceShipWidth < containerRightMargin) {
                     spaceShip.style.left = `${spaceShip.offsetLeft+1}px`;
-                    console.log("avance derecha");
                 } else {
                     stopHorizontalMove();
-                    console.log("fin carrera");
+                    console.log("right end reached");
                     return;
                 }
-                // console.log(spaceShip.offsetLeft);
                 break;
         }
         
         if(horizontalSpeed>=250) {
             stopHorizontalMove();
-            console.log("detenido");
+            console.log("stopped");
             return;
         }
-        movement = setTimeout(horizontalMovement, horizontalSpeed)
+        setTimeout(horizontalMovement, horizontalSpeed)
     }
 
     document.activeElement.blur();
-    document.addEventListener('keydown', e => {
+    function keysListener(e) {
         e.preventDefault();
         const pressedKey = e.code;
-        console.log(pressedKey)
-        // console.log(e)
+        // console.log(pressedKey)
         switch(pressedKey) {
             case 'Enter':
                 if(!spaceShipLaunched) {
                     horizontalSpeed=249;
                     horizontalDirection='Right';
                     horizontalMovement();
-
                     verticalSpeed=60;
                     verticalDirection='Down';
                     verticalMovement();
                     gravityAdjust();
-
                     spaceShipLaunched=true;
                 }
                 break;
@@ -223,9 +228,9 @@ const MoonLanderGame = () => {
                 !verticalRuning&&spaceShipLaunched ?verticalMovement(pressedKey) :adjustVerticalSpeed(pressedKey);
                 console.log(verticalSpeed);
                 break;
-        }
-        
-    });
+        } 
+    }
+    document.addEventListener('keydown', keysListener);
 };
 
 window.moonLanderGame = MoonLanderGame;
